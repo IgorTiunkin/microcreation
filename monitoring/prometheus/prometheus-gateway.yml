@@ -1,0 +1,13 @@
+global:
+  scrape_interval:   15s
+  external_labels:
+    monitor: 'api-gateway'
+
+scrape_configs:
+  - job_name: 'prometheus api-gateway'
+    scrape_interval: 5s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['localhost:8765']
+      - labels:
+          application : 'api-gateway'
